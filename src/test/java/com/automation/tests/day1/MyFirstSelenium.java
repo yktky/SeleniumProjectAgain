@@ -14,9 +14,13 @@ public class MyFirstSelenium {
 
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
         WebDriverManager.chromedriver().setup();
         ChromeDriver driver = new ChromeDriver();
         driver.get("http://google.com");
+        Thread.sleep(3);
+      String title =  driver.getTitle();  //return of the page <title>Some title</title> text
+        System.out.println(title);
+        driver.quit();
     }
 }
