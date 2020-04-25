@@ -15,21 +15,26 @@ public class UplodFilePractice {
     @BeforeMethod
     public void setUp(){
         driver = BrowserFactory.getDriver("chrome");
-        driver.get("http://practice.cybertekschool.com/");
+        driver.get("http://practice.cybertekschool.com/upload");
 
     }
     @Test
-    public void test1(){
-        driver.findElement(By.linkText("File Download")).click();
+    public void test1() throws Exception{
+        //driver.findElement(By.linkText("File Download")).click();
         // click file and right click press shift choose you will se copy as and put inside sendkeys
         // for file upload we need two things find elemnt and inside sendkeys put file path and click submit
         //provide path to the file
         //insert your path to the path to the file into sendkeys method
-        driver.findElement(By.id("file-upload")).sendKeys("C:\\Users\\darak\\Downloads\\class_notes.txt"); //How i uploded just put inside sendkeys
+
+        Thread.sleep(3);
+       //  driver.findElement(By.id("file-upload")).sendKeys("C:\\Users\\darak\\Desktop\\yekta.txt");
+        //How i uploded just put inside sendkeys
+        driver.findElement(By.id("file-upload")).sendKeys("C:\\Users\\darak\\Documents\\Class Note Guljannat.docx");
+
         driver.findElement(By.id("file-submit")).click();//click submit
         BrowserUtils.wait(3);
-        String expectedFileName = "class_notes.txt";
-        String actualFileName = driver.findElement(By.id("uploaded-file")).getText();
+        String expectedFileName = "Class Note Guljannat.docx";
+        String actualFileName = driver.findElement(By.id("uploaded-files")).getText();
         Assert.assertEquals(actualFileName,expectedFileName);
        // String file2Path ="C:\\Users\\darak\\Downloads\\day54 class note.txt";
     }
